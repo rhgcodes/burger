@@ -1,19 +1,25 @@
-var mysql = require("mysql");
+var mysql = require('mysql');
+var connection = mysql.createConnection(process.env.JAWSDB_URL);
 
-var connection = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "root",
-  database: "burgers_db"
-});
+connection.connect();
 
+// connection.query('SELECT 1 + 1 AS solution', function(err, rows, fields) {
+//   if (err) throw err;
 
-connection.connect(function(err) {
-  if (err) {
-    console.error("error connecting: " + err.stack);
-    return;
-  }
-  console.log("connected as id " + connection.threadId);
-});
+//   console.log('The solution is: ', rows[0].solution);
+// });
+
+if (process.env.JAWSDB_URL) {
+  connection = mysql.createConnection(process.env.JAWSDB_URL);
+ } else {
+  connection = mysql.createConnection({
+    host: 'wftuqljwesiffol6.cbetxkdyhwsb.us-east-1.rds.amazonaws.com',
+    user: 'l3gw3auder2h10ak',
+    password: 'auze9fo2gs8jrbi1',
+    database: 'ive1gu4tzulbdl1q'
+  })
+ };
+
+connection.end();
 
 module.exports = connection;

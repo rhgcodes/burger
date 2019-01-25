@@ -1,9 +1,9 @@
-CREATE DATABASE burgers_db;
-USE burgers_db;
-DROP TABLE IF EXISTS burgers;
+DROP table if exists burgers;
+
 CREATE TABLE burgers (
-    id INT NOT NULL AUTO_INCREMENT,
-    burger_name VARCHAR (255) NOT NULL,
-    devoured BOOLEAN DEFAULT false,
-    PRIMARY KEY (id)
+   id INT NOT NULL AUTO_INCREMENT,
+   burger_name VARCHAR (255) NOT NULL,
+   devoured BOOLEAN DEFAULT false,
+   createdAt TIMESTAMP on update current_timestamp,
+   PRIMARY KEY (id)
 );
